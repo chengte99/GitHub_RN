@@ -4,7 +4,6 @@ import { ConfirmButton, Input, Nav, Tips } from '../../../common/LoginComponent'
 import LoginDao from '../LoginDao';
 import Constant from '../Constant';
 
-
 const LoginPage = () => {
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');

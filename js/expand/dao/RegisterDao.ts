@@ -1,28 +1,28 @@
 import Constant from "./Constant";
 import { post } from "./Hinet";
-import { saveBoarding } from "./utils/BoardingUtils";
 
-export default class LoginDao {
-    private static instance: LoginDao;
-    private constructor() {};
-    public static getInstance(): LoginDao {
-        if(!LoginDao.instance) {
-            LoginDao.instance = new LoginDao();
+export default class RegisterDao {
+    private static instance: RegisterDao;
+    private constructor() { };
+    public static getInstance(): RegisterDao {
+        if (!RegisterDao.instance) {
+            RegisterDao.instance = new RegisterDao();
         }
-        return LoginDao.instance;
+        return RegisterDao.instance;
     }
-    login(userName: string, password: string): Promise<any> {
+    register(userName: string, password: string, imoocId: string, orderId: string): Promise<any> {
         return new Promise((resolve, reject) => {
             const {
-                login: {api}
+                registration: { api }
             } = Constant;
             const formData = new FormData();
             formData.append('userName', userName);
             formData.append('password', password);
+            formData.append('imoocId', imoocId);
+            formData.append('orderId', orderId);
             post(api)(formData)().then((res:any)=>{
                 const {code, data, msg} = res;
                 if(code === 0) {
-                    saveBoarding(data);
                     resolve(data||msg);
                 }else {
                     reject(res);

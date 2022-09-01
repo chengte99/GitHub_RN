@@ -1,11 +1,11 @@
 import { Text, StyleSheet, View } from 'react-native'
 import React, { Component } from 'react'
 
-export default class HomePage extends Component {
+export default class FavoritePage extends Component {
     render() {
         return (
             <View>
-                <Text>HomePage</Text>
+                <Text>FavoritePage</Text>
             </View>
         )
     }

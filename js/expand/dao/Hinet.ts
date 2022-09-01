@@ -1,6 +1,6 @@
 import Constant from "./Constant";
 import React from 'react';
-import { getBoarding } from "./utils/BoardingUtils";
+import { getBoarding } from "../../utils/BoardingUtils";
 
 export function get(api: string) {
     return async (params?: {}) => {

@@ -1,64 +1,68 @@
 import { Linking, SafeAreaView, StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
-import { ConfirmButton, Input, Nav, Tips } from '../../../common/LoginComponent';
-import LoginDao from '../LoginDao';
-import Constant from '../Constant';
+import { ConfirmButton, Input, Nav, Tips } from '../common/LoginComponent';
+import LoginDao from '../expand/dao/LoginDao';
+import Constant from '../expand/dao/Constant';
+import NavigatorUtil from '../navigator/NavigatorUtil';
 
-const LoginPage = () => {
+const LoginPage = (props: any) => {
+    const { navigation } = props;
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
     const [msg, setMsg] = useState('');
     const [helpURL, setHelpURL] = useState('https://m.imooc.com/article/279228')
-    const onLogin = ()=> {
-        if(userName == '' || password == '') {
+    const onLogin = () => {
+        if (userName == '' || password == '') {
             setMsg('用戶名與密碼不得為空');
             return;
         }
         setMsg('');
         setHelpURL('');
         LoginDao.getInstance()
-        .login(userName, password)
-        .then((res)=>{
-            setMsg('登入成功');
-        })
-        .catch((e)=> {
-            const { code, msg, data: {helpURL=''} = {}} = e;
-            setMsg(msg);
-        })
+            .login(userName, password)
+            .then((res) => {
+                setMsg('登入成功');
+                NavigatorUtil.resetToHome({ navigation });
+            })
+            .catch((e) => {
+                const { code, msg, data: { helpURL = '' } = {} } = e;
+                setMsg(msg);
+            })
     }
 
     return (
         <SafeAreaView style={styles.root}>
             <Nav title='登入' rightTitle='註冊'
-                rightOnClick={()=>{
-                    Linking.openURL(Constant.apiDoc);
+                rightOnClick={() => {
+                    // Linking.openURL(Constant.apiDoc);
+                    NavigatorUtil.register({ navigation });
                 }}
             />
-            <View style={styles.navLine}/>
+            <View style={styles.navLine} />
             <View style={styles.content}>
                 <Input
                     label="用戶名"
                     placeholder="請輸入用戶名"
                     shortLine={true}
-                    onChangeText={(text:string)=> setUserName(text)}
+                    onChangeText={(text: string) => setUserName(text)}
                 />
                 <Input
                     label="密碼"
                     placeholder="請輸入密碼"
                     secure={true}
-                    onChangeText={(text:string)=> setPassword(text)}
+                    onChangeText={(text: string) => setPassword(text)}
                 />
                 <ConfirmButton
                     title="登入"
                     onClick={onLogin}
                 />
-                <Tips 
+                <Tips
                     msg={msg}
                     helpURL={helpURL}
                 />
             </View>
         </SafeAreaView>
-        
+
     )
 }
 

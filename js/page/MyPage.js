@@ -1,11 +1,11 @@
 import { Text, StyleSheet, View } from 'react-native'
 import React, { Component } from 'react'
 
-export default class WelcomePage extends Component {
+export default class MyPage extends Component {
     render() {
         return (
             <View>
-                <Text>WelcomePage</Text>
+                <Text>MyPage</Text>
             </View>
         )
     }

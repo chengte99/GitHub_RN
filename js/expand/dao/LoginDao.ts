@@ -1,6 +1,6 @@
 import Constant from "./Constant";
 import { post } from "./Hinet";
-import { saveBoarding } from "./utils/BoardingUtils";
+import { saveBoarding } from "../../utils/BoardingUtils";
 
 export default class LoginDao {
     private static instance: LoginDao;

@@ -21,7 +21,7 @@ export default class WelcomePage extends Component {
             } else {
                 NavigatorUtil.login({ navigation });
             }
-        }, 2000);
+        }, 200);
     }
 
     render() {

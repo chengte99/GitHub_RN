@@ -10,6 +10,6 @@ import LoginPage from './js/page/LoginPage';
 import fetchDemoPage from './js/fetchDemoPage';
 import 'react-native-gesture-handler';
 import RegisterPage from './js/page/RegisterPage';
-import AppNavigators from './js/navigator/Appnavigators';
+import AppNavigators from './js/navigator/AppNavigators';
 
 AppRegistry.registerComponent(appName, () => AppNavigators);

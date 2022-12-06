@@ -2,6 +2,8 @@ import { Text, StyleSheet, View } from 'react-native'
 import React, { Component } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
+import { Provider } from 'react-redux'
+import store from './src_29_project/redux/store'
 // import Index from './src_03_Dimensions'
 // import Index from './src_04_Alert_Button'
 // import Index from './src_05_Switch_StatusBar'
@@ -25,16 +27,20 @@ import { SafeAreaProvider } from 'react-native-safe-area-context'
 // import Index from './src_22_StackNavigator'
 // import Index from './src_23_BottomTabNavigator'
 // import Index from './src_24_DrawerNavigator'
-import Index from './src_25_MaterialTopTabNavigator'
+// import Index from './src_25_MaterialTopTabNavigator'
+// import Index from './src_26_NestingNavigation'
+// import Index from './src_27_PassingParamater'
+// import Index from './src_28_API'
+import Index from './src_29_project'
 
 export default class AppInit extends Component {
     render() {
         return (
-            <SafeAreaProvider>
+            <Provider store={store}>
                 <NavigationContainer>
-                    <Index/>
+                    <Index />
                 </NavigationContainer>
-            </SafeAreaProvider>
+            </Provider>
         )
     }
 }
